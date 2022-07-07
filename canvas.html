@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas id="tuval" width="640" height="480" style="border: 1px solid">
+      canvas desteklenmiyor
+    </canvas>
+    <script>
+      var tuval = document.getElementById("tuval");
+      var cizim = tuval.getContext("2d");
+      var en = tuval.width;
+      var boy = tuval.hight;
+      var x = en / 2;
+      var y = boy / 2;
+      var dx = 5;
+      var dy = 5;
+
+      function ziplayanTop() {
+        temizle();
+        cizim.beginPath();
+        cizim.arc(x, y, 10, 0, 2 * Math.PI);
+        cizim.closePath();
+        cizim.fillStyle = "#ff0000";
+        x = x + dx;
+        y = y + dy;
+        cizim.fill();
+        if(x>en||x<0)
+        dx =-1*dx;
+        if(y>boy||y<0)
+        dy =-1*dy;
+        if(x<0)
+        dx=-1*dx
+        if(y<0)
+        dy=-1*dy
+      }
+
+      function temizle() {
+        cizim.beginPath();
+        cizim.fillStyle = "#ffffff";
+        cizim.fillRect(0, 0, tuval.width, tuval.height);
+        cizim.closePath();
+        cizim.fill();
+      }
+      setInterval(ziplayanTop(), 15);
+      //   function tiklama(e) {
+      //     temizle();
+      //     cizim.beginPath();
+      //     cizim.arc(e.x, e.y, 100, 0, 2 * Math.PI);
+      //     cizim.closePath();
+      //     cizim.fillStyle = "#ff0000";
+      //     cizim.fill();
+      //   }
+
+      //   tuval.addEventListener("mousemove", tiklama);
+      //   cizim.beginPath();
+      //   cizim.moveTo(0, 0);
+      //   cizim.lineTo(300, 300);
+      //   cizim.lineTo(400, 300);
+      //   cizim.moveTo(400, 0);
+      //   cizim.lineTo(500, 100);
+      //   cizim.moveTo(350, 200);
+      //   cizim.arc(300, 200, 50, 0, 2 * Math.PI);
+      //   cizim.font = "30px Arial";
+      //   cizim.fillText("First Canvas Project", 280, 320);
+      //   //x,y width,height
+      //   cizim.stroke();
+    </script>
+  </body>
+</html>
